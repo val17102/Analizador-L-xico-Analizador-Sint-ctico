@@ -5,6 +5,7 @@ grammar decaf3;
 CLASS               : 'class';
 PROGRAM             : 'Program';
 IF                  : 'if';
+WHILE               : 'while';
 ELSE                : 'else';
 RETURN              : 'return';
 
@@ -86,6 +87,7 @@ statement           : location assign_op expr
                     | location assign_op expr PUNTOCOMA
                     | methodCall
                     | IF LPAR expr RPAR block (ELSE block)?
+                    | WHILE LPAR expr RPAR block
                     | varId EQUAL_OP expr PUNTOCOMA
                     | RETURN expr PUNTOCOMA;
 
