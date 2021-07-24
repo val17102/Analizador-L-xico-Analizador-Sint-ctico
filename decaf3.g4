@@ -57,7 +57,7 @@ ALPHA      : [a-zA-Z_];
 CHAR_LITERAL        : COMILLA ( '\\' [btnfr"'\\] | ~[\r\n\\"] ) COMILLA;
 DECIMAL_LITERAL     : [0-9]+;
 DIGIT      : [0-9];
-BOOL_LITERAL        : TRUE | FALSE;
+BOOL_LITERAL        : ('True' | 'False');
 STRING_LITERAL      : '"' ( '\\' [btnfr"'\\] | ~[\r\n\\"] )* '"';
 ALPHA_NUM           : ALPHA | DIGIT;
 NEWLINE				: ('\r'? '\n' | '\r')+ -> skip;
@@ -83,8 +83,8 @@ returnType         : (var_type | VOID);
 
 block               : LBIG varDeclaration* statement* RBIG;
 
-statement           : location assign_op expr
-                    | location assign_op expr PUNTOCOMA
+statement           : location assign_op expr PUNTOCOMA
+                    | location assign_op expr 
                     | methodCall
                     | IF LPAR expr RPAR block (ELSE block)?
                     | WHILE LPAR expr RPAR block
@@ -114,13 +114,13 @@ eq_op               : EQUALITY_OP | UNEQUALITY_OP;
 
 cond_op             : AND | OR;
 
-literal             : int_literal | CHAR_LITERAL | BOOL_LITERAL;
+literal             : int_literal | CHAR_LITERAL | BOOL_LITERAL | STRING_LITERAL;
 
 bin_op              : arith_op | rel_op | eq_op | cond_op;
 
 arith_op            : ADD | SUB | MULTIPLY | DIVIDE | MODULO;
 
-var_type            : INT | BOOLEAN;
+var_type            : INT | BOOLEAN | STRING | CHAR;
 
 assign_op           : EQUAL_OP
                     | ADD_eq_op

@@ -7,9 +7,14 @@ class Program{
 
     void main(){
         int num1; int num2;
+        string s;
         int resultado;
         num1 = 2;
         num2 = 3;
+        s = "hola";
         resultado = suma(num1,num2);
+	    while (num1 < num2){
+		    resultado = resultado + 1;
+	    }
     }
 }
