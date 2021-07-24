@@ -27,6 +27,18 @@ public class decaf3BaseListener implements decaf3Listener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterDeclaration(decaf3Parser.DeclarationContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitDeclaration(decaf3Parser.DeclarationContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterVarDeclaration(decaf3Parser.VarDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}

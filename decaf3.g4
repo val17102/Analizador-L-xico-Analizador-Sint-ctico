@@ -66,7 +66,9 @@ NEWLINE				: ('\r'? '\n' | '\r')+ -> skip;
 
 //Productions
 
-program		    : CLASS PROGRAM LBIG paramDeclaration* methodDeclaration* RBIG;
+program		    : CLASS PROGRAM LBIG paramDeclaration* declaration* RBIG;
+
+declaration        : structDeclaration | varDeclaration | methodDeclaration;
 
 varDeclaration            : (var_type paramVar) (COMMA var_type paramVar)* PUNTOCOMA;
 

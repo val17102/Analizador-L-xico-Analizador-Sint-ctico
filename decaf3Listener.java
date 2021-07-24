@@ -17,6 +17,16 @@ public interface decaf3Listener extends ParseTreeListener {
 	 */
 	void exitProgram(decaf3Parser.ProgramContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link decaf3Parser#declaration}.
+	 * @param ctx the parse tree
+	 */
+	void enterDeclaration(decaf3Parser.DeclarationContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link decaf3Parser#declaration}.
+	 * @param ctx the parse tree
+	 */
+	void exitDeclaration(decaf3Parser.DeclarationContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link decaf3Parser#varDeclaration}.
 	 * @param ctx the parse tree
 	 */

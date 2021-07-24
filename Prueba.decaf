@@ -1,4 +1,7 @@
 class Program{
+    struct po {string boo;};
+    int hh;
+
     int suma(int a, int b){
         int c;
         c = a + b;
