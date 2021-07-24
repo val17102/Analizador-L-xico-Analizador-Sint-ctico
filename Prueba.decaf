@@ -6,6 +6,7 @@ class Program{
     }
 
     void main(){
+        struct t { int a; string s;};
         int num1; int num2;
         string s;
         int resultado;

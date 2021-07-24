@@ -18,6 +18,7 @@ STRING              : 'string';
 TRUE                : 'True';
 FALSE               : 'False';
 VOID                : 'void';
+STRUCT              : 'struct';
 
 // Symbols
 
@@ -71,6 +72,8 @@ varDeclaration            : (var_type paramVar) (COMMA var_type paramVar)* PUNTO
 
 paramDeclaration         : var_type paramVar (COMMA paramVar)* PUNTOCOMA;
 
+structDeclaration  : STRUCT ID LBIG varDeclaration* RBIG PUNTOCOMA;
+
 arrayId            : ID LCOR int_literal RCOR;
 
 paramVar           : varId | arrayId;
@@ -81,7 +84,7 @@ methodDeclaration        : returnType methodName LPAR ((var_type varId) (COMMA v
 
 returnType         : (var_type | VOID);
 
-block               : LBIG varDeclaration* statement* RBIG;
+block               : LBIG structDeclaration* varDeclaration* statement* RBIG;
 
 statement           : location assign_op expr PUNTOCOMA
                     | location assign_op expr 
