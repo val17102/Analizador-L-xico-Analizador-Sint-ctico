@@ -49,6 +49,7 @@ ADD_eq_op           : '+=';
 SUB_eq_op           : '-=';
 EQUALITY_OP         : '==';
 UNEQUALITY_OP       : '!=';
+DOT                 : '.';
 
 
 // Variables
@@ -74,15 +75,17 @@ varDeclaration            : (var_type paramVar) (COMMA var_type paramVar)* PUNTO
 
 paramDeclaration         : var_type paramVar (COMMA paramVar)* PUNTOCOMA;
 
-structDeclaration  : STRUCT ID LBIG varDeclaration* RBIG PUNTOCOMA;
+structDeclaration  : (STRUCT ID LBIG (varDeclaration | structDeclaration)* RBIG PUNTOCOMA) | structSingle;
 
-arrayId            : ID LCOR int_literal RCOR;
+structSingle       : STRUCT ID paramVar PUNTOCOMA;
+
+arrayId            : ID LCOR (int_literal | paramVar) RCOR;
 
 paramVar           : varId | arrayId;
 
 varId              : ID;
 
-methodDeclaration        : returnType methodName LPAR ((var_type varId) (COMMA var_type varId)*)? RPAR block;
+methodDeclaration        : returnType methodName LPAR (((var_type varId) | VOID) (COMMA var_type varId)*)? RPAR block;
 
 returnType         : (var_type | VOID);
 
@@ -90,6 +93,7 @@ block               : LBIG structDeclaration* varDeclaration* statement* RBIG;
 
 statement           : location assign_op expr PUNTOCOMA
                     | location assign_op expr 
+                    | location (DOT location)* assign_op expr PUNTOCOMA
                     | methodCall
                     | IF LPAR expr RPAR block (ELSE block)?
                     | WHILE LPAR expr RPAR block
@@ -102,6 +106,8 @@ methodCall         : methodCallInter
                     | methodCallInter PUNTOCOMA;
 
 expr                : location
+                    | location (DOT location)*
+                    | location (DOT location)* bin_op expr
                     | literal
                     | expr bin_op expr
                     | SUB expr

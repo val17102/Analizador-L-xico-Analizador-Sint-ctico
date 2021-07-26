@@ -75,6 +75,18 @@ public class decaf3BaseListener implements decaf3Listener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterStructSingle(decaf3Parser.StructSingleContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitStructSingle(decaf3Parser.StructSingleContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterArrayId(decaf3Parser.ArrayIdContext ctx) { }
 	/**
 	 * {@inheritDoc}
